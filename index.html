@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon_io/favicon-32x32.png">
+</head>
+<body>
+
+    <header class="nav-bar">
+        <div>
+            <h2 class="logo">Portfolio</h2>
+        </div>
+        <div>
+            <nav>
+                <ul class="nav-bar-items">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="nav-btn-div">
+            <button class="nav-bar-sign-btn">Sign-in</button>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-section-desc">
+            <div class="hero-section-content">
+                <h4>Hello, I'm</h4>
+                <h2><span>Kirthik Aditya</span> JK</h2>
+                <p>I'm Kartheepan , a B.Tech student with a strong interest in Cybersecurity.Currently building my foundation in programming, pentesting, and SOC concepts while exploring real-world applications of Cybersecurity.</p>
+            </div>
+            <div>
+                <ul class="hero-section-icons">
+                    <li><a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                    <li><a href="https://github.com/spryzz3n" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                </ul>
+            </div>
+            <div class="hero-section-btns">
+                <button>Hire me</button>
+                <button>Download CV</button>
+            </div>
+        </div>
+        <div class="hero-section-image">
+            <img src="images/Hero image.png" alt="Aditya's Photo">
+        </div>
+    </section>
+
+    <section class="stat-section" id="education">
+        <div class="stat-section-title">
+            <h2>Education</h2>
+        </div>
+        <div class="stat-section-box">
+            <div>
+                <h4>10th Grade</h4>
+                <p>82 percent</p>
+            </div>
+            <div>
+                <h4>12th Grade</h4>
+                <p>77 percent</p>
+            </div>
+            <div>
+                <h4>Semester 1&2</h4>
+                <p>7.36 CGPA</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="about" class="about-section">
+        <div class="about-section-image">
+            <img src="images/My Photo.jpg" alt="Aditya's Photo" width="350">
+        </div>
+        <div class="about-section-content">
+            <div class="about-section-content-head">
+                <h3>Kirthik Aditya</h3>
+                <h4>Aspiring AI/ML Engineer</h4>
+            </div>
+            <br>
+            <div class="about-section-content-para">
+                <p>I am an aspiring Artificial Intelligence and Machine Learning engineer currently pursuing my B.Tech degree. I am deeply interested in understanding how data, algorithms, and intelligent systems work together to solve real-world problems.</p>
+                <br>
+                <p>I am building a strong foundation in programming, mathematics, and core AI/ML concepts while continuously learning through coursework and hands-on practice. I enjoy exploring new technologies and improving my problem-solving skills step by step.</p>
+            </div>
+            <button>Download CV</button>
+        </div>
+    </section>
+
+    <section id="skills" class="service-section">
+        <div class="service-section-head">
+            <h3>Skills I Have</h3>
+<p>
+Here are the technical skills I am currently developing, focusing on programming fundamentals,
+AI & Machine Learning concepts, and problem-solving techniques.
+</p>
+        </div>
+        <div class="service-section-cards">
+<div>
+    <i class="fa-solid fa-code"></i>
+    <h4>Programming Fundamentals</h4>
+</div>
+
+<div>
+    <i class="fa-solid fa-robot"></i>
+    <h4>Artificial Intelligence & Machine Learning Basics</h4>
+</div>
+
+<div>
+    <i class="fa-solid fa-puzzle-piece"></i>
+    <h4>Problem Solving & Logical Thinking</h4>
+</div>
+
+<div>
+    <i class="fa-solid fa-chart-line"></i>
+    <h4>Data Analysis Fundamentals</h4>
+</div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-wrapper">
+            <div class="contact-container">
+                <h2>Contact Me</h2>
+                <p>If you'd like to get in touch, please leave your details below</p>
+
+                <form action="#" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <div class="vertical-line"></div>
+
+            <div class="contact-details">
+                <h2>Contact Info</h2>
+
+                <div class="details">
+                    <i class="fas fa-phone"></i>
+                    <p>+91 9994960689</p>
+                </div>
+
+                <div class="details">
+                    <i class="fas fa-envelope"></i>
+                    <p>kirthikaditya2@gmail.com</p>
+                </div>
+
+                <div class="details">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Pollachi, Coimbatore, India</p>
+                </div>
+
+                <div class="details">
+                    <i class="fab fa-linkedin"></i>
+                    <p>https://www.linkedin.com/in/kirthik-aditya-m-bb2667355/</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="footer-bottom">
+            <p>&copy; 2025 M Kirthik Aditya. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
