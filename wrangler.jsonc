@@ -2,7 +2,7 @@
 // plus the live TryHackMe endpoint in worker/index.js.
 // "name" must match the Worker you created in the Cloudflare dashboard.
 {
-  "name": "kirthik-portfolio",
+  "name": "portfolio",
   "main": "worker/index.js",
   "compatibility_date": "2025-09-01",
   "assets": {
