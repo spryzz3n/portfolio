@@ -35,4 +35,4 @@ npm run deploy       # builds, then uploads dist/ to Cloudflare
 
 ## TryHackMe stats
 
-`scripts/fetch-tryhackme.mjs` reads the public TryHackMe profile API and writes `public/tryhackme.json`, which the TryHackMe card loads. The deploy workflow runs it before every build, and also on a schedule every 6 hours, so the numbers stay fresh without a push. If the fetch fails, the build still succeeds and the card shows the fallback numbers in `src/data/resume.js`. Run `npm run stats` to fetch them locally.
+`scripts/fetch-tryhackme.mjs` reads the public TryHackMe profile API (with a plain request, then headless Chromium via Playwright if TryHackMe blocks it) and writes `public/tryhackme.json`, which the TryHackMe card loads. The deploy workflow runs it before every build, and also on a schedule every 6 hours, so the numbers stay fresh without a push. If the fetch fails, the build still succeeds and the card shows the fallback numbers in `src/data/resume.js`. Run `npm run stats` to fetch them locally.

@@ -19,6 +19,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.14",
     "@vitejs/plugin-react": "^4.3.3",
+    "playwright": "^1.56.1",
     "tailwindcss": "^4.1.14",
     "vite": "^5.4.10",
     "wrangler": "^4.142.0"
