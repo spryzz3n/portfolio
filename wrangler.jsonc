@@ -1,10 +1,13 @@
-// Cloudflare Worker that serves the built site (dist/) as static assets.
+// Cloudflare Worker that serves the built site (dist/) as static assets,
+// plus the live TryHackMe endpoint in worker/index.js.
 // "name" must match the Worker you created in the Cloudflare dashboard.
 {
   "name": "kirthik-portfolio",
+  "main": "worker/index.js",
   "compatibility_date": "2025-09-01",
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     "not_found_handling": "404-page"
   }
 }

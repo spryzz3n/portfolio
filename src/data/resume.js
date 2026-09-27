@@ -145,15 +145,11 @@ export const community = [
     text: 'Solving rooms and CTF-style challenges across web, network and cloud security tracks.',
     href: 'https://tryhackme.com/p/SPRYZZEN',
     display: 'tryhackme.com/p/SPRYZZEN',
-    // Update these from the TryHackMe profile, then redeploy.
+    // Live numbers come from /api/tryhackme (worker/index.js, refreshed hourly).
+    // These are shown if that request fails, e.g. under `npm run dev`.
     stats: {
-      asOf: 'Sep 2026',
-      items: [
-        { value: 'Top 3%', label: 'of all users' },
-        { value: '#71,321', label: 'global rank' },
-        { value: '137', label: 'rooms completed' },
-        { value: '16', label: 'badges earned' },
-      ],
+      endpoint: '/api/tryhackme',
+      fallback: { topPercentage: 3, rank: 71321, completedRooms: 137, badges: 16 },
     },
   },
   {

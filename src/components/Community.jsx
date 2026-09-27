@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { community } from '../data/resume.js'
 import Icon from './Icon.jsx'
 import { ExternalLink, Section } from './ui.jsx'
@@ -34,7 +35,29 @@ function Card({ name, icon, text, href, display }) {
   )
 }
 
-function StatCard({ name, icon, text, href, display, stats }) {
+function useLiveStats({ endpoint, fallback }) {
+  const [state, setState] = useState({ stats: fallback, live: false })
+  useEffect(() => {
+    let cancelled = false
+    fetch(endpoint)
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .then((data) => {
+        if (!cancelled && typeof data.rank === 'number') setState({ stats: data, live: true })
+      })
+      .catch(() => {}) // keep the fallback numbers
+    return () => { cancelled = true }
+  }, [endpoint])
+  return state
+}
+
+function StatCard({ name, icon, text, href, display, stats: config }) {
+  const { stats, live } = useLiveStats(config)
+  const items = [
+    { value: `Top ${stats.topPercentage}%`, label: 'of all users' },
+    { value: `#${stats.rank.toLocaleString('en-US')}`, label: 'global rank' },
+    { value: stats.completedRooms, label: 'rooms completed' },
+    { value: stats.badges, label: 'badges earned' },
+  ]
   return (
     <div className="grid gap-6 rounded-xl border border-edge bg-mist p-[26px] md:col-span-2 lg:grid-cols-[1fr_1.6fr] lg:items-center lg:gap-10">
       <div className="flex flex-col gap-2.5">
@@ -46,14 +69,17 @@ function StatCard({ name, icon, text, href, display, stats }) {
       </div>
       <div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {stats.items.map((s) => (
+          {items.map((s) => (
             <div key={s.label} className="rounded-[10px] border border-line bg-white p-3.5">
               <b className="block text-[22px] leading-tight text-sky-deep tabular-nums">{s.value}</b>
               <span className="mt-0.5 block text-[12.5px] leading-snug text-muted">{s.label}</span>
             </div>
           ))}
         </div>
-        <p className="mt-2.5 text-right font-mono text-xs text-muted">as of {stats.asOf}</p>
+        <p className="mt-2.5 flex items-center justify-end gap-1.5 font-mono text-xs text-muted">
+          {live && <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden="true" />}
+          {live ? 'live from TryHackMe' : 'from TryHackMe'}
+        </p>
       </div>
     </div>
   )
