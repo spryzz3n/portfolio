@@ -15,30 +15,24 @@ npm run preview   # serves dist/ locally
 
 All text, links and skills live in `src/data/resume.js`. Replace `public/resume.pdf` to update the downloadable resume.
 
-## Hosting on AWS (S3 + CloudFront)
+## Hosting (Cloudflare Workers)
 
-1. **S3 bucket**: create a bucket and keep **Block all public access** on. Don't enable static website hosting.
-2. **Certificate** (only for a custom domain): request one in ACM in **us-east-1**.
-3. **CloudFront distribution**:
-   - Origin: the S3 bucket, with **Origin Access Control (OAC)**. Let CloudFront update the bucket policy.
-   - Viewer protocol policy: **Redirect HTTP to HTTPS**.
-   - Default root object: `index.html`.
-   - Response headers policy: the managed **SecurityHeadersPolicy** (adds HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy).
-4. **Domain** (optional): point it at the distribution with a Route 53 alias record.
+The site is served by a Cloudflare Worker with static assets, configured in `wrangler.jsonc`. The `name` there must match the Worker in your Cloudflare dashboard.
 
 ### Deploy by hand
 
 ```bash
-npm run build
-aws s3 sync dist/ s3://YOUR_BUCKET --delete
-aws cloudfront create-invalidation --distribution-id YOUR_DIST_ID --paths "/*"
+npx wrangler login   # first time only
+npm run deploy       # builds, then uploads dist/ to Cloudflare
 ```
 
 ### Deploy automatically with GitHub Actions
 
-`.github/workflows/deploy.yml` builds and deploys on every push to `main`. It signs in to AWS with OIDC, so no access keys are stored in GitHub.
+`.github/workflows/deploy.yml` builds and deploys on every push to `main`. Add two repository secrets under **Settings → Secrets and variables → Actions**:
 
-1. In IAM, add GitHub's OIDC provider (`token.actions.githubusercontent.com`) and create a role that trusts your repo. Give it `s3:ListBucket`, `s3:PutObject`, `s3:DeleteObject` on the bucket and `cloudfront:CreateInvalidation` on the distribution.
-2. In the repo's **Settings → Secrets and variables → Actions**, add:
-   - Secret `AWS_ROLE_ARN`
-   - Variables `AWS_REGION`, `S3_BUCKET`, `CLOUDFRONT_DISTRIBUTION_ID`
+- `CLOUDFLARE_API_TOKEN`: create one at Cloudflare **My Profile → API Tokens → Create Token**, using the **Edit Cloudflare Workers** template.
+- `CLOUDFLARE_ACCOUNT_ID`: shown on the Workers & Pages overview page, or in the URL of your Cloudflare dashboard.
+
+## Updating TryHackMe stats
+
+The numbers on the TryHackMe card are in `src/data/resume.js` under `community`. Change them (and `asOf`) and push.

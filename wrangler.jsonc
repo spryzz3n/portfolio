@@ -1,0 +1,10 @@
+// Cloudflare Worker that serves the built site (dist/) as static assets.
+// "name" must match the Worker you created in the Cloudflare dashboard.
+{
+  "name": "kirthik-portfolio",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

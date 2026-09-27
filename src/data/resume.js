@@ -145,6 +145,16 @@ export const community = [
     text: 'Solving rooms and CTF-style challenges across web, network and cloud security tracks.',
     href: 'https://tryhackme.com/p/SPRYZZEN',
     display: 'tryhackme.com/p/SPRYZZEN',
+    // Update these from the TryHackMe profile, then redeploy.
+    stats: {
+      asOf: 'Sep 2026',
+      items: [
+        { value: 'Top 3%', label: 'of all users' },
+        { value: '#71,321', label: 'global rank' },
+        { value: '137', label: 'rooms completed' },
+        { value: '16', label: 'badges earned' },
+      ],
+    },
   },
   {
     name: 'Medium',
