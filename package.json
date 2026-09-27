@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "vite build && wrangler deploy"
+    "deploy": "vite build && wrangler deploy",
+    "stats": "node scripts/fetch-tryhackme.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.460.0",

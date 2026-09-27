@@ -36,13 +36,15 @@ function Card({ name, icon, text, href, display }) {
 }
 
 function useLiveStats({ endpoint, fallback }) {
-  const [state, setState] = useState({ stats: fallback, live: false })
+  const [state, setState] = useState({ stats: fallback, updated: null })
   useEffect(() => {
     let cancelled = false
-    fetch(endpoint)
+    fetch(endpoint, { cache: 'no-cache' })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
       .then((data) => {
-        if (!cancelled && typeof data.rank === 'number') setState({ stats: data, live: true })
+        if (cancelled || typeof data.rank !== 'number') return
+        const updated = new Date(data.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        setState({ stats: data, updated })
       })
       .catch(() => {}) // keep the fallback numbers
     return () => { cancelled = true }
@@ -51,7 +53,7 @@ function useLiveStats({ endpoint, fallback }) {
 }
 
 function StatCard({ name, icon, text, href, display, stats: config }) {
-  const { stats, live } = useLiveStats(config)
+  const { stats, updated } = useLiveStats(config)
   const items = [
     { value: `Top ${stats.topPercentage}%`, label: 'of all users' },
     { value: `#${stats.rank.toLocaleString('en-US')}`, label: 'global rank' },
@@ -76,9 +78,8 @@ function StatCard({ name, icon, text, href, display, stats: config }) {
             </div>
           ))}
         </div>
-        <p className="mt-2.5 flex items-center justify-end gap-1.5 font-mono text-xs text-muted">
-          {live && <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden="true" />}
-          {live ? 'live from TryHackMe' : 'from TryHackMe'}
+        <p className="mt-2.5 text-right font-mono text-xs text-muted">
+          {updated ? `updated ${updated}` : 'from TryHackMe'}
         </p>
       </div>
     </div>

@@ -17,7 +17,7 @@ All text, links and skills live in `src/data/resume.js`. Replace `public/resume.
 
 ## Hosting (Cloudflare Workers)
 
-The site is served by a Cloudflare Worker with static assets, configured in `wrangler.jsonc`. `worker/index.js` only handles `/api/tryhackme`; everything else is a static file. The `name` there must match the Worker in your Cloudflare dashboard.
+The site is served by a Cloudflare Worker with static assets, configured in `wrangler.jsonc`. The `name` there must match the Worker in your Cloudflare dashboard.
 
 ### Deploy by hand
 
@@ -35,4 +35,4 @@ npm run deploy       # builds, then uploads dist/ to Cloudflare
 
 ## TryHackMe stats
 
-The TryHackMe card loads live numbers from `/api/tryhackme`, served by `worker/index.js`. The Worker reads TryHackMe's public profile API and caches it for an hour. If that request fails (or under `npm run dev`, where the Worker doesn't run), the card shows the fallback numbers in `src/data/resume.js`. To test the Worker locally, run `npm run build` and then `npx wrangler dev`.
+`scripts/fetch-tryhackme.mjs` reads the public TryHackMe profile API and writes `public/tryhackme.json`, which the TryHackMe card loads. The deploy workflow runs it before every build, and also on a schedule every 6 hours, so the numbers stay fresh without a push. If the fetch fails, the build still succeeds and the card shows the fallback numbers in `src/data/resume.js`. Run `npm run stats` to fetch them locally.

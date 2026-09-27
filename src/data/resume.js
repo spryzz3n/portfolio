@@ -145,10 +145,10 @@ export const community = [
     text: 'Solving rooms and CTF-style challenges across web, network and cloud security tracks.',
     href: 'https://tryhackme.com/p/SPRYZZEN',
     display: 'tryhackme.com/p/SPRYZZEN',
-    // Live numbers come from /api/tryhackme (worker/index.js, refreshed hourly).
-    // These are shown if that request fails, e.g. under `npm run dev`.
+    // Fresh numbers come from /tryhackme.json, written by scripts/fetch-tryhackme.mjs in CI.
+    // These are shown if that file is missing, e.g. under `npm run dev`.
     stats: {
-      endpoint: '/api/tryhackme',
+      endpoint: '/tryhackme.json',
       fallback: { topPercentage: 3, rank: 71321, completedRooms: 137, badges: 16 },
     },
   },
