@@ -1,34 +1,26 @@
-# Kirthik Aditya Portfolio
+# Portfolio
 
-Static portfolio site built with Vite, React and Tailwind CSS. Hosted on Cloudflare Workers.
+This is the code behind my personal site, live at **[me.skysec.org](https://me.skysec.org)**.
 
-## Run locally
+I'm Kirthik Aditya, a cybersecurity student. The site is where I keep my projects, skills and resume in one place, mainly ZeroTrace and BIT CyberSpace. It's a small React app built with Vite and Tailwind CSS, and it runs on Cloudflare.
+
+## Running it locally
+
+You'll need Node.js. Then:
 
 ```bash
 npm install
-npm run dev       # http://localhost:5173
-npm run build     # outputs to dist/
-npm run preview   # serves dist/ locally
+npm run dev
 ```
 
-## Editing content
+That starts the site at http://localhost:5173 and reloads as you edit. To check the production build, run `npm run build` and then `npm run preview`.
 
-All text, links and skills live in `src/data/resume.js`. Replace `public/resume.pdf` to update the downloadable resume.
+## Changing the content
 
-## Hosting (Cloudflare Workers)
+Almost everything you read on the site, from the intro and projects to the skills and links, comes from one file: `src/data/resume.js`. I edit that file and leave the components alone. The downloadable resume is `public/resume.pdf`, so updating it means dropping in a new PDF with the same name.
 
-The site is served by a Cloudflare Worker with static assets, configured in `wrangler.jsonc`. The `name` there must match the Worker in your Cloudflare dashboard.
+## How it gets deployed
 
-### Deploy by hand
+Every push to `main` runs a GitHub Actions workflow that builds the site and deploys it to a Cloudflare Worker. The workflow needs two repository secrets, `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
 
-```bash
-npx wrangler login   # first time only
-npm run deploy       # builds, then uploads dist/ to Cloudflare
-```
-
-### Deploy automatically with GitHub Actions
-
-`.github/workflows/deploy.yml` builds and deploys on every push to `main`. Add two repository secrets under **Settings → Secrets and variables → Actions**:
-
-- `CLOUDFLARE_API_TOKEN`: create one at Cloudflare **My Profile → API Tokens → Create Token**, using the **Edit Cloudflare Workers** template.
-- `CLOUDFLARE_ACCOUNT_ID`: shown on the Workers & Pages overview page, or in the URL of your Cloudflare dashboard.
+To deploy by hand instead, log in once with `npx wrangler login`, then run `npm run deploy`.
