@@ -26,7 +26,7 @@ export function SectionHead({ title }) {
 
 export function Tag({ name, icon }) {
   return (
-    <span className="inline-flex items-center gap-[7px] rounded-full border border-edge bg-white px-3 py-1.5 text-[13.5px] leading-tight">
+    <span className="chip inline-flex items-center gap-[7px] rounded-full border border-edge bg-white px-3 py-1.5 text-[13.5px] leading-tight">
       <Icon name={icon} className="size-[15px]" />
       {name}
     </span>

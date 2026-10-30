@@ -9,7 +9,7 @@ export default function Projects() {
         {projects.map((p) => (
           <article
             key={p.name}
-            className="flex flex-col gap-[22px] rounded-[14px] border border-line bg-white p-6 transition-colors hover:border-edge sm:p-8"
+            className="card flex flex-col gap-[22px] rounded-[14px] border border-line bg-white p-6 sm:p-8"
           >
             <div>
               <h3 className="text-[22px] font-bold">{p.name}</h3>
@@ -18,7 +18,7 @@ export default function Projects() {
 
             <div className="grid grid-cols-3 gap-3">
               {p.metrics.map((m) => (
-                <div key={m.label} className="rounded-[10px] bg-mist p-3.5">
+                <div key={m.label} className="chip rounded-[10px] border border-transparent bg-mist p-3.5">
                   <b className="block text-2xl leading-tight text-sky-deep tabular-nums">{m.value}</b>
                   <span className="mt-0.5 block text-[12.5px] leading-snug text-muted">{m.label}</span>
                 </div>
