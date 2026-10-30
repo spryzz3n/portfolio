@@ -130,19 +130,6 @@ export const education = {
   years: '2024 – 2028',
 }
 
-export const certifications = [
-  { name: 'Cisco, Introduction to Cybersecurity', icon: 'cisco' },
-  { name: 'Pwn Till Dawn', icon: 'award', link: { label: 'achievements', href: 'https://online.pwntilldawn.com/Achievements/9259' } },
-  { name: 'CyLab Academy', icon: 'award', link: { label: 'profile', href: 'https://learn.cylabacademy.org/users/spryzz3n' } },
-]
-
-export const interests = [
-  { name: 'Cybersecurity Engineering', icon: 'shieldCheck' },
-  { name: 'Network Security', icon: 'network' },
-  { name: 'Cloud Security', icon: 'serverCog' },
-  { name: 'DevSecOps', icon: 'binary' },
-]
-
 // TryHackMe blocks other sites from reading its API, so live stats come from
 // its official badge embed, which loads in the visitor's browser.
 export const tryhackme = {
