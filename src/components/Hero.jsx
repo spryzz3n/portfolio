@@ -23,7 +23,7 @@ export default function Hero() {
 
         <dl
           aria-label="Quick facts"
-          className="grid gap-[22px] rounded-[14px] border border-edge bg-white p-7 shadow-[0_12px_34px_-20px_rgba(12,111,174,.4)]"
+          className="card grid gap-[22px] rounded-[14px] border border-edge bg-white p-7 shadow-[0_12px_34px_-20px_rgba(12,111,174,.4)]"
         >
           {profile.facts.map((f) => (
             <div key={f.label}>

@@ -143,14 +143,24 @@ export const interests = [
   { name: 'DevSecOps', icon: 'binary' },
 ]
 
+// TryHackMe blocks other sites from reading its API, so live stats come from
+// its official badge embed, which loads in the visitor's browser.
+export const tryhackme = {
+  username: 'SPRYZZEN',
+  href: 'https://tryhackme.com/p/SPRYZZEN',
+  badge: 'https://tryhackme.com/badge/t/fae7ffe29aa3a1998a2a86c87dc93b53ad4ac0adf855f58639711f43b2ebc5214c1d6a0a3a3090ea95445bb3377af339?theme=dark',
+  text: 'Solving rooms and CTF-style challenges across web, network and cloud security tracks.',
+}
+
+// Live stats come from /api/pwntilldawn, served by the Worker in worker/index.js.
+export const pwntilldawn = {
+  href: 'https://online.pwntilldawn.com/Achievements/9259',
+  display: 'online.pwntilldawn.com/Achievements/9259',
+  api: '/api/pwntilldawn',
+  text: 'Pwning machines in the PwnTillDawn battlefield, a live penetration testing range.',
+}
+
 export const community = [
-  {
-    name: 'TryHackMe',
-    icon: 'tryhackme',
-    text: 'Solving rooms and CTF-style challenges across web, network and cloud security tracks.',
-    href: 'https://tryhackme.com/p/SPRYZZEN',
-    display: 'tryhackme.com/p/SPRYZZEN',
-  },
   {
     name: 'Medium',
     icon: 'medium',

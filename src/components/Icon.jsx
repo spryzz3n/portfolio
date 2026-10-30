@@ -36,7 +36,15 @@ const lines = {
   shieldAlert: ShieldAlert, shieldCheck: ShieldCheck, waypoints: Waypoints,
 }
 
+// Logos with no SVG version, served from public/.
+const images = {
+  pwntilldawn: '/pwntilldawn.png',
+}
+
 export default function Icon({ name, className = 'size-4' }) {
+  if (images[name]) {
+    return <img src={images[name]} alt="" className={`shrink-0 ${className}`} aria-hidden="true" />
+  }
   if (brands[name]) {
     const [icon, color] = brands[name]
     return (

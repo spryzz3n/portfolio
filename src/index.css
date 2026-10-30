@@ -42,4 +42,33 @@
   .btn-ghost {
     @apply bg-white text-sky-deep hover:bg-mist;
   }
+
+  /* Soft shadow on every box, lifting slightly on hover. */
+  .card {
+    box-shadow: 0 1px 2px rgb(15 42 61 / 0.04), 0 6px 16px -10px rgb(12 111 174 / 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover {
+    @apply border-edge;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgb(15 42 61 / 0.04), 0 14px 28px -14px rgb(12 111 174 / 0.3);
+  }
+  /* The same effect, scaled down for chips and small tiles. */
+  .chip {
+    box-shadow: 0 1px 2px rgb(15 42 61 / 0.04), 0 3px 8px -5px rgb(12 111 174 / 0.16);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .chip:hover {
+    @apply border-sky;
+    transform: translateY(-1px);
+    box-shadow: 0 1px 2px rgb(15 42 61 / 0.04), 0 8px 16px -8px rgb(12 111 174 / 0.3);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card,
+    .card:hover,
+    .chip,
+    .chip:hover {
+      transform: none;
+    }
+  }
 }

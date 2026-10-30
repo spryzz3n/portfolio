@@ -10,8 +10,8 @@ export default function Skills() {
             key={s.group}
             className={
               i === 0
-                ? 'rounded-xl border border-edge bg-mist p-6 sm:col-span-2'
-                : 'rounded-xl border border-line p-6'
+                ? 'card rounded-xl border border-edge bg-mist p-6 sm:col-span-2'
+                : 'card rounded-xl border border-line p-6'
             }
           >
             <h3><Eyebrow className="mb-4 font-medium text-sky-deep">{s.group}</Eyebrow></h3>
