@@ -1,5 +1,6 @@
 import { projects } from '../data/resume.js'
-import { Section, Tags } from './ui.jsx'
+import Icon from './Icon.jsx'
+import { ExternalLink, LiveDot, Section, Tags } from './ui.jsx'
 
 export default function Projects() {
   return (
@@ -29,6 +30,17 @@ export default function Projects() {
             </ul>
 
             <Tags items={p.stack} className="mt-auto pt-1" />
+
+            {p.links && (
+              <div className="flex flex-wrap gap-5 text-[15px] font-medium">
+                {p.links.map((l) => (
+                  <ExternalLink key={l.href} href={l.href} className="inline-flex items-center gap-2">
+                    {l.icon === 'live' ? <LiveDot /> : <Icon name={l.icon} />}
+                    {l.label}
+                  </ExternalLink>
+                ))}
+              </div>
+            )}
           </article>
         ))}
       </div>

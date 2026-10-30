@@ -1,9 +1,9 @@
 import {
-  siAmazonaws, siCisco, siDocker, siGit, siGithub, siGnubash, siGo, siLinkedin,
-  siLinux, siMedium, siNginx, siPython, siTryhackme, siWireshark,
+  siAmazonaws, siCisco, siCplusplus, siDebian, siDocker, siGit, siGithub, siGnubash, siGo, siLinkedin,
+  siLinux, siMedium, siNginx, siOpenssl, siTryhackme, siWireshark,
 } from 'simple-icons'
 import {
-  Activity, Award, Binary, Bug, Crosshair, Disc3, Fingerprint, Globe, KeyRound,
+  Activity, Award, Binary, Bug, Crosshair, Disc3, Fingerprint, Globe, HardDrive, KeyRound,
   LockKeyhole, Network, Radar, Route, ScanSearch, ServerCog, ShieldAlert,
   ShieldCheck, Waypoints,
 } from 'lucide-react'
@@ -11,8 +11,10 @@ import {
 // Brand logos. A few brand colors are adjusted so they stay visible on white.
 const brands = {
   go: [siGo],
-  python: [siPython],
   bash: [siGnubash],
+  cpp: [siCplusplus],
+  debian: [siDebian],
+  openssl: [siOpenssl],
   linux: [siLinux, '1A1A1A'],
   docker: [siDocker],
   aws: [siAmazonaws, 'FF9900'],
@@ -29,7 +31,7 @@ const brands = {
 // Line icons for tools and concepts without an official logo.
 const lines = {
   activity: Activity, award: Award, binary: Binary, bug: Bug, crosshair: Crosshair,
-  disc: Disc3, fingerprint: Fingerprint, globe: Globe, key: KeyRound, lock: LockKeyhole,
+  disc: Disc3, drive: HardDrive, fingerprint: Fingerprint, globe: Globe, key: KeyRound, lock: LockKeyhole,
   network: Network, radar: Radar, route: Route, scan: ScanSearch, serverCog: ServerCog,
   shieldAlert: ShieldAlert, shieldCheck: ShieldCheck, waypoints: Waypoints,
 }
