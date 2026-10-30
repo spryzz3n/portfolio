@@ -5,7 +5,7 @@ export const profile = {
   name: 'Kirthik Aditya',
   role: 'Cybersecurity & Cloud Security Engineer',
   summary:
-    'Cybersecurity engineer with hands-on experience in penetration testing, network security and vulnerability assessment, backed by Linux, Docker and AWS. I built a cloud-based cybersecurity lab platform and a secure data-sanitization tool using cryptographic erasure and HSM-backed key management, working in Go, Python and Bash.',
+    'Cybersecurity engineer with hands-on experience in penetration testing, network security and vulnerability assessment, backed by Linux, Docker and AWS. I built a cloud-based cybersecurity lab platform in Go, and a verifiable drive-erasure tool in C++ that sanitizes disks at the firmware level and issues signed certificates.',
   email: 'kirthikaditya2@gmail.com',
   resume: '/resume.pdf',
   facts: [
@@ -14,7 +14,7 @@ export const profile = {
   ],
   coreStack: [
     { name: 'Go', icon: 'go' },
-    { name: 'Python', icon: 'python' },
+    { name: 'C++', icon: 'cpp' },
     { name: 'Bash', icon: 'bash' },
     { name: 'Linux', icon: 'linux' },
     { name: 'Docker', icon: 'docker' },
@@ -48,24 +48,29 @@ export const projects = [
   },
   {
     name: 'ZeroTrace',
-    subtitle: 'Secure Data Erasure & Media Sanitization Tool',
+    subtitle: 'Verifiable drive erasure, bootable Linux ISO',
     metrics: [
-      { value: '100%', label: 'successful erasure rate' },
-      { value: '20', label: 'test drives validated' },
-      { value: '3', label: 'storage form factors' },
+      { value: '9', label: 'sanitize methods detected per drive' },
+      { value: '~1,000', label: 'regions read back after every erase' },
+      { value: '2', label: 'boot modes, UEFI and BIOS' },
     ],
     points: [
-      'Built a bootable ISO and companion app that securely wipes HDDs and SSDs for decommissioning on-premise and cloud storage.',
-      'Used cryptographic erasure (destroying the key instead of overwriting data), cutting wipe time versus multi-pass methods like DoD 5220.22-M.',
-      'Integrated a Hardware Security Module for key generation, storage and destruction, preventing key recovery after sanitization.',
-      'Wrote the wiping engine and automation tooling in Python and Bash for compliance-driven asset retirement.',
+      "Built a bootable Debian ISO in C++ that erases drives with their own NVMe and ATA sanitize commands, sending raw commands to the drive through the kernel's NVMe admin and SG_IO interfaces.",
+      'Verified every erase by reading the disk back with O_DIRECT. For firmware erases it plants random canaries first, so a drive that claims success without erasing gets caught.',
+      'Issued tamper-evident certificates signed with Ed25519 over RFC 8785 canonical JSON, with matching verifiers in C++ and JavaScript and a public browser verifier.',
+      'Found and fixed boot, D-Bus and console-font issues by testing the ISO in Proxmox VMs, with a destructive integration test that locates its target disks by serial number.',
     ],
     stack: [
-      { name: 'Python', icon: 'python' },
-      { name: 'Bash', icon: 'bash' },
-      { name: 'HSM', icon: 'key' },
-      { name: 'Cryptographic Erasure', icon: 'lock' },
-      { name: 'Bootable ISO', icon: 'disc' },
+      { name: 'C++', icon: 'cpp' },
+      { name: 'Linux', icon: 'linux' },
+      { name: 'NVMe', icon: 'drive' },
+      { name: 'OpenSSL', icon: 'openssl' },
+      { name: 'Cryptography', icon: 'key' },
+      { name: 'Debian live-build', icon: 'debian' },
+    ],
+    links: [
+      { label: 'Live site', icon: 'live', href: 'https://zerotrace.skysec.org' },
+      { label: 'Source', icon: 'github', href: 'https://github.com/spryzz3n/ZeroTrace' },
     ],
   },
 ]
@@ -113,8 +118,8 @@ export const skills = [
     group: 'Programming',
     items: [
       { name: 'Go', icon: 'go' },
-      { name: 'Python', icon: 'python' },
-      { name: 'Bash Scripting', icon: 'bash' },
+      { name: 'C++', icon: 'cpp' },
+        { name: 'Bash Scripting', icon: 'bash' },
     ],
   },
 ]

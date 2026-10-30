@@ -1,6 +1,6 @@
 # Kirthik Aditya Portfolio
 
-Static portfolio site built with Vite, React and Tailwind CSS. Hosted on S3 behind CloudFront.
+Static portfolio site built with Vite, React and Tailwind CSS. Hosted on Cloudflare Workers.
 
 ## Run locally
 
