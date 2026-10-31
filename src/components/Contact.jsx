@@ -6,7 +6,7 @@ import { Eyebrow, ExternalLink, Section } from './ui.jsx'
 export default function Contact() {
   return (
     <Section id="contact" className="bg-mist">
-      <div className="grid items-center gap-10 md:grid-cols-[1fr_auto]">
+      <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto]">
         <div>
           <h2 className="mb-2.5 text-[28px] font-bold tracking-tight">Contact</h2>
           <p className="max-w-[52ch] text-muted">

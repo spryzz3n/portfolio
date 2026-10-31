@@ -5,7 +5,7 @@ import { ExternalLink, LiveDot, Section, Tags } from './ui.jsx'
 export default function Projects() {
   return (
     <Section id="projects" title="Projects" className="border-t-0">
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {projects.map((p) => (
           <article
             key={p.name}
