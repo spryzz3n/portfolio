@@ -5,7 +5,7 @@ import { Container, Eyebrow, Tags } from './ui.jsx'
 export default function Hero() {
   return (
     <div className="border-b border-line bg-linear-to-b from-mist to-white">
-      <Container className="grid items-center gap-10 py-14 md:grid-cols-[1.4fr_1fr] md:gap-16 md:pt-24 md:pb-22">
+      <Container className="grid grid-cols-1 items-center gap-10 py-14 md:grid-cols-[1.4fr_1fr] md:gap-16 md:pt-24 md:pb-22">
         <div>
           <h1 className="mb-3.5 text-[clamp(36px,5.2vw,56px)] leading-[1.08] font-bold tracking-tight text-balance">
             {profile.name}
