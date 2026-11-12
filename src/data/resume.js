@@ -3,9 +3,9 @@
 
 export const profile = {
   name: 'Kirthik Aditya',
-  role: 'Cybersecurity & Cloud Security Engineer',
+  role: 'Aspiring Security Engineer',
   summary:
-    'Cybersecurity engineer with hands-on experience in penetration testing, network security and vulnerability assessment, backed by Linux, Docker and AWS. I built a cloud-based cybersecurity lab platform in Go, and a verifiable drive-erasure tool in C++ that sanitizes disks at the firmware level and issues signed certificates.',
+    'Cybersecurity student interested in penetration testing, network security and cloud security. I learn by doing: CTFs on TryHackMe and PwnTillDawn, a Proxmox homelab, and writing security tools in Go, C++ and Python. I work mostly on Linux with Docker and AWS, and I enjoy contributing to open source.',
   email: 'kirthikaditya2@gmail.com',
   resume: '/resume.pdf',
   facts: [
@@ -15,6 +15,7 @@ export const profile = {
   coreStack: [
     { name: 'Go', icon: 'go' },
     { name: 'C++', icon: 'cpp' },
+    { name: 'Python', icon: 'python' },
     { name: 'Bash', icon: 'bash' },
     { name: 'Linux', icon: 'linux' },
     { name: 'Docker', icon: 'docker' },
@@ -25,40 +26,44 @@ export const profile = {
 export const projects = [
   {
     name: 'BIT CyberSpace',
-    subtitle: 'Cybersecurity & Cloud PaaS Platform',
+    subtitle: 'College cybersecurity lab platform, team project. I handled infrastructure and deployment.',
     metrics: [
-      { value: '12+', label: 'containerized lab environments' },
-      { value: '40%', label: 'smaller external attack surface' },
-      { value: '80%', label: 'faster environment provisioning' },
+      { value: '0', label: 'inbound ports open on the server' },
+      { value: '2', label: 'nginx entry points: tunnel and lab LAN' },
+      { value: '1', label: 'lab container per student, each with its own LAN IP' },
     ],
     points: [
-      'Built Go backend services for a cloud lab platform where students run penetration tests against containers and analyze PCAP files to capture flags.',
-      'Hosted 12+ isolated, purpose-built vulnerable environments supporting 20 concurrent users.',
-      'Configured Nginx for reverse proxy, TLS termination and service routing, centralizing access control to backend containers.',
-      'Designed around network segmentation and least-privilege access, with Wireshark and Nmap workflows for traffic analysis and recon.',
+      'Ran the production server for a college platform where students study security topics and take practical assessments in lab containers. The API runs under systemd as an unprivileged service user.',
+      "Published it at cyberspace.skysec.org through a Cloudflare Tunnel, since the server sits behind college NAT with no inbound ports, and gave lab PCs a direct LAN path with Let's Encrypt TLS.",
+      'Configured nginx so the student assessment API answers only on the LAN listener and only from the lab subnet. It checks the listener and source address, not headers like X-Forwarded-For that a client can fake.',
+      'Hosted the Docker lab runtime, where each student gets a container on a macvlan network with a fixed IP, and cleanup only touches containers the platform labeled as its own.',
     ],
     stack: [
-      { name: 'Go', icon: 'go' },
-      { name: 'Docker', icon: 'docker' },
       { name: 'Linux', icon: 'linux' },
+      { name: 'Docker', icon: 'docker' },
       { name: 'Nginx', icon: 'nginx' },
-      { name: 'Wireshark', icon: 'wireshark' },
-      { name: 'Nmap', icon: 'radar' },
+      { name: 'Cloudflare Tunnel', icon: 'cloudflare' },
+      { name: 'MySQL', icon: 'mysql' },
+      { name: 'Go', icon: 'go' },
+    ],
+    links: [
+      { label: 'Live site', icon: 'live', href: 'https://cyberspace.skysec.org' },
+      { label: 'Source', icon: 'github', href: 'https://github.com/G6kco/CyberSpace' },
     ],
   },
   {
-    name: 'ZeroTrace',
-    subtitle: 'Verifiable drive erasure, bootable Linux ISO',
+    name: 'PurgeMark',
+    subtitle: 'NIST SP 800-88 drive sanitization, bootable Linux ISO',
     metrics: [
-      { value: '9', label: 'sanitize methods detected per drive' },
-      { value: '~1,000', label: 'regions read back after every erase' },
+      { value: '~1,000', label: 'random regions read back after every erase' },
+      { value: '800-88', label: 'NIST SP level shown for every erase method' },
       { value: '2', label: 'boot modes, UEFI and BIOS' },
     ],
     points: [
-      "Built a bootable Debian ISO in C++ that erases drives with their own NVMe and ATA sanitize commands, sending raw commands to the drive through the kernel's NVMe admin and SG_IO interfaces.",
+      "Built a bootable Debian ISO in C++ that erases drives with their own NVMe and ATA commands, sent through the kernel's NVMe admin and SG_IO interfaces, and falls back to an AES-256-CTR overwrite where it can't.",
       'Verified every erase by reading the disk back with O_DIRECT. For firmware erases it plants random canaries first, so a drive that claims success without erasing gets caught.',
-      'Issued tamper-evident certificates signed with Ed25519 over RFC 8785 canonical JSON, with matching verifiers in C++ and JavaScript and a public browser verifier.',
-      'Found and fixed boot, D-Bus and console-font issues by testing the ISO in Proxmox VMs, with a destructive integration test that locates its target disks by serial number.',
+      'Issued tamper-evident certificates signed with Ed25519 over RFC 8785 canonical JSON, with a command-line verifier and a browser verifier that never uploads the file.',
+      'Refuses disks that are mounted, used as swap or part of LVM, RAID or LUKS, and is tested in Proxmox VMs with a destructive integration test that finds its target disks by serial number.',
     ],
     stack: [
       { name: 'C++', icon: 'cpp' },
@@ -69,8 +74,32 @@ export const projects = [
       { name: 'Debian live-build', icon: 'debian' },
     ],
     links: [
-      { label: 'Live site', icon: 'live', href: 'https://zerotrace.skysec.org' },
-      { label: 'Source', icon: 'github', href: 'https://github.com/spryzz3n/ZeroTrace' },
+      { label: 'Live site', icon: 'live', href: 'https://purgemark.skysec.org' },
+      { label: 'Source', icon: 'github', href: 'https://github.com/spryzz3n/PurgeMark' },
+    ],
+  },
+  {
+    name: 'IndexCase',
+    subtitle: 'Malware propagation tracer for Active Directory, in progress',
+    metrics: [
+      { value: '3', label: 'log sources: Security, System and Sysmon' },
+      { value: '1', label: 'normalized Parquet schema for every event' },
+      { value: 'DHCP', label: 'reassignment handled in IP-to-host resolution' },
+    ],
+    points: [
+      'Building a DFIR command-line tool that reads EVTX and JSONL logs from many hosts and normalizes Security, System and Sysmon events, from logons and Kerberos to service installs and scheduled tasks, into one Parquet schema.',
+      'Resolves IPs to hosts over time and prefers Sysmon network telemetry over the workstation names clients supply, which tools like Impacket can fake.',
+      'Next: link each remote execution (SMB plus service install as with PsExec, WMI, scheduled tasks) to the logon that caused it, then rank the likely patient zero with every link citing its events.',
+    ],
+    stack: [
+      { name: 'Python', icon: 'python' },
+      { name: 'Polars', icon: 'polars' },
+      { name: 'Parquet', icon: 'parquet' },
+      { name: 'Windows Event Logs', icon: 'windows' },
+      { name: 'pytest', icon: 'pytest' },
+    ],
+    links: [
+      { label: 'Source', icon: 'github', href: 'https://github.com/spryzz3n/IndexCase' },
     ],
   },
 ]
@@ -119,7 +148,8 @@ export const skills = [
     items: [
       { name: 'Go', icon: 'go' },
       { name: 'C++', icon: 'cpp' },
-        { name: 'Bash Scripting', icon: 'bash' },
+      { name: 'Python', icon: 'python' },
+      { name: 'Bash Scripting', icon: 'bash' },
     ],
   },
 ]
@@ -158,9 +188,10 @@ export const community = [
   {
     name: 'GitHub',
     icon: 'github',
-    text: 'Homelab code and configs for Linux administration, networking and cloud environments.',
+    text: 'Security tools I build, from drive sanitization in C++ to incident-response tooling in Python. Also my first open source contribution: a merged fix to Zeek, stopping its raw input reader from looping forever on an empty record separator.',
     href: 'https://github.com/spryzz3n',
     display: 'github.com/spryzz3n',
+    extra: { href: 'https://github.com/zeek/zeek/pull/6058', display: 'zeek/zeek#6058 (merged)' },
   },
 ]
 

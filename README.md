@@ -2,7 +2,7 @@
 
 This is the code behind my personal site, live at **[me.skysec.org](https://me.skysec.org)**.
 
-I'm Kirthik Aditya, a cybersecurity student. The site is where I keep my projects, skills and resume in one place, mainly ZeroTrace and BIT CyberSpace. It's a small React app built with Vite and Tailwind CSS, and it runs on Cloudflare.
+I'm Kirthik Aditya, a cybersecurity student. The site is where I keep my projects, skills and resume in one place, mainly PurgeMark, IndexCase and BIT CyberSpace. It's a small React app built with Vite and Tailwind CSS, and it runs on Cloudflare.
 
 ## Running it locally
 

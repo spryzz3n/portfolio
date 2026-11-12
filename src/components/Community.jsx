@@ -160,9 +160,10 @@ export default function Community() {
               {c.name}
             </h3>
             <p className="text-[15px] text-muted">{c.text}</p>
-            <ExternalLink href={c.href} className="mt-auto pt-1.5 font-mono text-[13px] break-all">
-              {c.display}
-            </ExternalLink>
+            <div className="mt-auto flex flex-wrap gap-x-5 gap-y-1 pt-1.5 font-mono text-[13px]">
+              <ExternalLink href={c.href} className="break-all">{c.display}</ExternalLink>
+              {c.extra && <ExternalLink href={c.extra.href} className="break-all">{c.extra.display}</ExternalLink>}
+            </div>
           </div>
         ))}
       </div>

@@ -15,9 +15,9 @@ export function Section({ id, title, className = '', children }) {
   )
 }
 
-export function SectionHead({ title }) {
+export function SectionHead({ title, className = 'mb-9' }) {
   return (
-    <div className="mb-9 flex items-baseline gap-4">
+    <div className={`flex items-baseline gap-4 ${className}`}>
       <h2 className="text-[28px] font-bold tracking-tight">{title}</h2>
       <div className="h-0.5 flex-1 bg-linear-to-r from-edge to-transparent" />
     </div>
